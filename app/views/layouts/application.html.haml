@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+%html
+  %head
+    %meta{"http-equiv"=>"Content-type", :content=>"text/html;charset=utf-8"}/
+    %title Active Blogr
+    = stylesheet_link_tag 'application', 'css1', 'css2'
+    = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic&subset=latin'
+    = javascript_include_tag 'jquery'
+  %body
+    #content
+      #header
+        #logo
+          %a{:href => "http://activeblogr.heroku.com/", :title=>"Home"}
+            = image_tag 'logo.gif'
+
+        = yield
+      #footer
+        #footer-content
+          %p
+            Powered By
+            = link_to "Active Blogr", "http://activeblogr.heroku.com/", :target => "_blank" 
+
