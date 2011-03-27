@@ -33,7 +33,10 @@ group :test do
   gem "factory_girl_rails"
   gem "autotest"
   gem "mocha"
-  #gem 'ruby-debug'
+  gem 'ruby-debug19', :require => 'ruby-debug'
+end
+
+group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
 end
 

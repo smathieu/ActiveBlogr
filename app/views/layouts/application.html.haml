@@ -12,6 +12,16 @@
         #logo
           %a{:href => "http://activeblogr.heroku.com/", :title=>"Home"}
             = image_tag 'logo.gif'
+        - flash.each do |key, value|
+          .messages{:id => "flash_#{key}"}
+            - if value.respond_to?(:each) 
+              %ul
+              - value.each do |error|
+                %li
+                  = error
+            - else
+              = value 
+        
 
         = yield
       #footer

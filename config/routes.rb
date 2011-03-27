@@ -51,6 +51,8 @@ BlogReminder::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   root :to => "landing#index"
+  match '/signup' => "landing#signup"
+
 
   # See how all your routes lay out with "rake routes"
 

@@ -1,18 +1,19 @@
 = javascript_include_tag "http://platform.twitter.com/widgets.js"
 = javascript_include_tag "landing" 
 
-#register
-  - form_tag :id => 'signup' do
-    %fieldset
-      = text_field_tag :email, "Enter Your Email Address Here", :class => 'email'
-      = text_field_tag :rss, "Enter Your RSS/Atom Feed Here", :class => 'email'
-      = submit_tag "Submit", :class => "btn", :alt => "Join"
-            
 #description
-  %h2 Active Blogr
+  %p Get reminders when you don't blog.
 
-  %p Get reminders when you don't blog. Blog and win karma points.
-
+#register
+  - form_for @blog, :url => signup_path do |f|
+    %fieldset
+      .elements
+        = f.text_field :email, :value => "Your Email Address", :class => 'email'
+        = f.text_field :rss_feed, :value => "Your RSS/Atom Feed", :class => 'email'
+        = f.select :days_between_posts, frequency_options
+      .submit
+        = submit_tag "Remind Me", :class => "btn", :alt => "Join"
+            
 
 #twitter
   = link_to "Tweet this", "http://twitter.com/share", :class => "twitter-share-button"

@@ -26,6 +26,3 @@ h1, h2, a:link, a:visited {
   text-shadow: 1px 1px 0px #E3E2DF;
 }
 
-#logo img:hover, a:hover {
-  opacity: 0.8;
-}

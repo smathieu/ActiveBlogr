@@ -6,6 +6,9 @@ class Blog
   field :last_post, :type => Time
   field :days_between_posts, :type => Integer
 
+  validates_presence_of :email, :rss_feed, :days_between_posts
+  validates_numericality_of :days_between_posts, :greater_than => 0
+
 
   def maybe_notify
     if last_post && days_between_posts
