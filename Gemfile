@@ -4,6 +4,7 @@ gem 'rails', '3.0.5'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'sqlite3'
 
 
 # Use unicorn as the web server
@@ -44,9 +45,6 @@ group :deploy do
   gem 'heroku'
 end
 
-gem "devise"
 gem "haml", ">= 3.0.0"
 gem "haml-rails"
-gem "mongoid", ">= 2.0.0.beta.19"
 gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
-gem "bson_ext"
