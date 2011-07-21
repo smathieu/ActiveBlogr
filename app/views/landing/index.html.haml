@@ -5,7 +5,7 @@
   %p Get reminders when you don't blog.
 
 #register
-  - form_for @blog, :url => signup_path do |f|
+  = form_for @blog, :url => signup_path do |f|
     %fieldset
       .elements
         = f.text_field :email, :value => "Your Email Address", :class => 'email'

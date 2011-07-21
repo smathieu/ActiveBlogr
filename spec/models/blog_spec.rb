@@ -25,3 +25,13 @@ describe Blog do
     @blog.update_rss
   end
 end
+
+describe 'Blog with valid RSS feed', :type => Blog do
+  let(:blog) { Factory(:blog, :rss_feed => 'http://blog.simonmathieu.com/rss') }
+
+  it "should update rss" do
+    blog.last_post.should be_nil 
+    blog.update_rss
+    blog.last_post.should_not be_nil 
+  end
+end
