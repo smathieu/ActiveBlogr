@@ -20,4 +20,8 @@ describe Blog do
     UserMailer.expects(:blog_reminder).never
     @blog.maybe_notify
   end
+
+  it "should update all rss feeds" do
+    @blog.update_rss
+  end
 end
