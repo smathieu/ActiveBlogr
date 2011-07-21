@@ -14,14 +14,13 @@ class Blog < ActiveRecord::Base
   def update_rss
     begin
       rss = RSS::Parser.parse(open(self.rss_feed).read, false)
-      item = rss.items.first
-      last_updated = item.date
-      self.last_post = last_updated
-      self.save
     rescue
-      # Swallow exception. 
-      # TODO after to many errors, delete record
+      return
     end
+
+    item = rss.items.first
+    self.last_post = item.date.to_s
+    self.save!
   end
 
   def self.update_all_rss

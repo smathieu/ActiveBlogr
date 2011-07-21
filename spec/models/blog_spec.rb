@@ -31,7 +31,7 @@ describe 'Blog with valid RSS feed', :type => Blog do
 
   it "should update rss" do
     blog.last_post.should be_nil 
-    blog.update_rss
-    blog.last_post.should_not be_nil 
+    blog.update_rss.should be_true
+    blog.reload.last_post.should_not be_nil 
   end
 end
