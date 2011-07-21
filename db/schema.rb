@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110721161159) do
+ActiveRecord::Schema.define(:version => 20110721184017) do
 
   create_table "blogs", :force => true do |t|
     t.string   "email"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110721161159) do
     t.integer  "days_between_posts"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token"
   end
 
   create_table "rails_admin_histories", :force => true do |t|

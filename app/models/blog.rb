@@ -1,12 +1,14 @@
 class Blog < ActiveRecord::Base
   validates_presence_of :email, :rss_feed, :days_between_posts
   validates_numericality_of :days_between_posts, :greater_than => 0
+  before_create { generate_token(:token) }
 
   def maybe_notify
     if last_post && days_between_posts
       last_email_sent ||= 1.year.ago
       if last_post + days_between_posts.days < DateTime.now && last_email_sent < last_post
         UserMailer.blog_reminder(self).deliver
+        update_attribute :last_email_sent, Time.now
       end
     end
   end
@@ -15,7 +17,7 @@ class Blog < ActiveRecord::Base
     begin
       rss = RSS::Parser.parse(open(self.rss_feed).read, false)
     rescue
-      return
+      return false
     end
 
     item = rss.items.first
@@ -33,5 +35,12 @@ class Blog < ActiveRecord::Base
     Blog.all.each do |blog|
       blog.maybe_notify
     end
+  end
+
+  private
+  def generate_token(column)
+    begin
+      self[column] = SecureRandom.urlsafe_base64
+    end while self.class.exists?(column => self[column])
   end
 end

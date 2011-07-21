@@ -5,12 +5,12 @@
     %title Active Blogr
     = stylesheet_link_tag 'application', 'css1', 'css2'
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Droid+Serif:regular,italic,bold,bolditalic&subset=latin'
-    = javascript_include_tag 'jquery'
+    = javascript_include_tag 'jquery', "http://platform.twitter.com/widgets.js"
   %body
     #content
       #header
         #logo
-          %a{:href => "http://activeblogr.heroku.com/", :title=>"Home"}
+          %a{:href => root_path, :title=>"Home"}
             = image_tag 'logo.gif'
         - flash.each do |key, value|
           .messages{:id => "flash_#{key}"}
@@ -28,5 +28,5 @@
         #footer-content
           %p
             Powered By
-            = link_to "Active Blogr", "http://activeblogr.heroku.com/", :target => "_blank" 
+            = link_to "Active Blogr", root_path, :target => "_blank" 
 

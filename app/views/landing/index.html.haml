@@ -1,11 +1,10 @@
-= javascript_include_tag "http://platform.twitter.com/widgets.js"
 = javascript_include_tag "landing" 
 
 #description
-  %p Get reminders when you don't blog.
+  %h2 Get reminders when you don't blog.
 
 #register
-  = form_for @blog, :url => signup_path do |f|
+  = form_for @blog, :url => blogs_path do |f|
     %fieldset
       .elements
         = f.text_field :email, :value => "Your Email Address", :class => 'email'
@@ -14,7 +13,5 @@
       .submit
         = submit_tag "Remind Me", :class => "btn", :alt => "Join"
             
-
-#twitter
-  = link_to "Tweet this", "http://twitter.com/share", :class => "twitter-share-button"
+= render 'partials/twitter'
 
