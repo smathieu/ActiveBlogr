@@ -10,4 +10,20 @@ class Blog < ActiveRecord::Base
       end
     end
   end
+
+  def self.update_all_rss
+    Blog.all.each do |blog|
+      rss = RSS::Parser.parse(open(blog.rss_feed).read, false)
+      item = rss.items.first
+      last_updated = item.date
+      blog.last_post = last_updated
+      blog.save
+    end
+  end
+
+  def self.maybe_notify_all
+    Blog.all.each do |blog|
+      blog.maybe_notify
+    end
+  end
 end
