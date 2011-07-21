@@ -1,4 +1,6 @@
 BlogReminder::Application.routes.draw do
+  devise_for :users
+
   get "landing/index"
 
   # The priority is based upon order of creation:
