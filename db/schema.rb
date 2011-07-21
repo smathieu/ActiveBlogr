@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20110721161159) do
     t.datetime "updated_at"
   end
 
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories_on_item_and_table_and_month_and_year"
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "rails_admin_histories_index"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
