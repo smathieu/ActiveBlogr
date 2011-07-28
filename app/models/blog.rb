@@ -5,7 +5,7 @@ class Blog < ActiveRecord::Base
 
   def maybe_notify
     if last_post && days_between_posts
-      last_email_sent ||= 1.year.ago
+      last_email_sent = self.last_email_sent || 1.year.ago
       if last_post + days_between_posts.days < DateTime.now && last_email_sent < last_post
         UserMailer.blog_reminder(self).deliver
         update_attribute :last_email_sent, Time.now
