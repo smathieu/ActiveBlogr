@@ -7,9 +7,9 @@
   = form_for @blog, :url => blogs_path do |f|
     %fieldset
       .elements
-        = f.text_field :email, :value => "Your Email Address", :class => 'email'
-        = f.text_field :rss_feed, :value => "Your RSS/Atom Feed", :class => 'email'
-        = f.select :days_between_posts, frequency_options
+        = f.text_field :email, :value => "Your Email Address", :class => 'with_default email'
+        = f.text_field :rss_feed, :value => "Your RSS/Atom Feed", :class => 'with_default url'
+        = f.select :days_between_posts, frequency_options, {}, :class => 'required'
       .submit
         = submit_tag "Remind Me", :class => "btn", :alt => "Join"
             

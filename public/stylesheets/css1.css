@@ -138,7 +138,7 @@ p {
   margin: 65px 0 50px 0;
 }
 
-input.email, select {
+input.with_default, select {
   border: 6px solid #363534;
   background: #E0E0DC;
   font-size: 16px;
