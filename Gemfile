@@ -16,6 +16,13 @@ end
 
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'guard'
+  gem "guard-bundler"
+  gem "guard-rails"
+  gem "guard-rspec"
+  gem 'rb-fsevent', :require => false 
+  gem "rb-inotify", :require => false
+  gem "libnotify", :require => false
 end
 
 group :deploy do
