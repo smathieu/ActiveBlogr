@@ -6,6 +6,7 @@ gem 'sqlite3'
 gem 'whenever'
 gem 'devise'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+gem 'permanent_records'
 
 group :test do
   gem "factory_girl_rails"

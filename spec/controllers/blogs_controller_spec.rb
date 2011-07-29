@@ -22,7 +22,7 @@ describe BlogsController do
         response.should be_success
         blog = assigns[:blog]
 
-        blog.destroyed?.should be_true
+        blog.deleted_at?.should be_present
 
         response.body.should include('success')
       end

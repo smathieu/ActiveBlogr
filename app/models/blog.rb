@@ -4,7 +4,7 @@ class Blog < ActiveRecord::Base
   before_create { generate_token(:token) }
 
   def maybe_notify
-    if last_post && days_between_posts
+    if last_post && days_between_posts && !deleted?
       last_email_sent = self.last_email_sent || 1.year.ago
       if last_post + days_between_posts.days < DateTime.now && last_email_sent < last_post
         UserMailer.blog_reminder(self).deliver
@@ -26,13 +26,13 @@ class Blog < ActiveRecord::Base
   end
 
   def self.update_all_rss
-    Blog.all.each do |blog|
+    Blog.not_deleted.each do |blog|
       blog.update_rss
     end
   end
 
   def self.maybe_notify_all
-    Blog.all.each do |blog|
+    Blog.not_deleted.each do |blog|
       blog.maybe_notify
     end
   end

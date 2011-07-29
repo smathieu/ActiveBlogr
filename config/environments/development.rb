@@ -20,7 +20,7 @@ BlogReminder::Application.configure do
   ActionMailer::Base.smtp_settings = {
     :address => "localhost",
     :port => 1025,  # port for MockSMTP
-    :domain => "www.yardsticksoftware.com"
+    :domain => "www.activeblogr.com"
   }
 
 

@@ -9,3 +9,7 @@ end
 Factory.define :blog_with_invalid_rss_feed, :parent => :blog do |f|
   f.rss_feed 'foobar'
 end
+
+Factory.define :deleted_blog, :parent => :blog do |f|
+  f.deleted_at DateTime.now
+end
